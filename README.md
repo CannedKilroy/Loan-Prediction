@@ -62,7 +62,11 @@ The best model amongst the ones tried so far is
 
 ### Next Steps
 ---
-- Try to standardize employee title using regex or NLP
+- Standardize employee title using regex or NLP
+- Standardize loan description given by the borrower using regex or NLP
+- Re-Introduce the geographical features by using 3rd party information such as average or median income for a specified state or zip code
+- 
+
 
 ### Licensing, Authors, Acknowledgements
 ---
@@ -70,7 +74,3 @@ The data for this analysis has come from:
 
 - [LendingClub Dataset](https://www.kaggle.com/datasets/wordsforthewise/lending-club)
 - [LendingClub Data Dictionary](https://www.kaggle.com/datasets/jonchan2003/lending-club-data-dictionary)
-
-
-
-
