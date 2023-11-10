@@ -2,14 +2,13 @@
 
 ### Project Overview
 -- ----
-With an estimated size of $153 billion dollars in 2022, the peer to peer (P2P) loan market is a viable alternative to traditional lending institutions for individuals seeking small loans. However, investors face challenges in assessing the creditworthiness of applicants due to the uncertainty of repayment, the lack of collateralization, and the minimum borrower information in the P2P markets.
+With an estimated size of $153 billion dollars in 2022, the peer to peer (P2P) loan market is a viable alternative to traditional lending institutions for individuals seeking small loans. However, investors face challenges in predicting the likelihood of repayment or default due to the lack of borrower information in P2P markets and lack of collateralization.
 
-The Primary objective of this project is to **predict whether a borrower will defualt on their loan, based on the charecteristics of the loan and the borrowers financial standing**, allowing investors to better minimize credit risk.
+The Primary objective of this project is to **predict whether a borrower will repay or default on their loan, based on the charecteristics of the loan and the borrowers financial standing**, allowing investors to better minimize credit risk.
 
-The secondary objective is to explore ***whether a similar accuracy is achievable without the use of grey metrics such as fico scores.***
+The secondary objective is to explore ***whether a comparable accuracy is achievable without the use of opaque metrics such as FICO scores.***. This could lead to more inclusive and fair lending practices, as FICO scores can sometimes reflect biases. Furthermore, it would increase accessability to those who have a limited credit history or are otherwise misrepresented by tradiontal credit scoring methods, enabling investors to extend more loans. 
 
-Both classical statistical methods such as Logistic Regression, and more complex machine learning models will be used. 
-Including:
+Classical statistical methods, such as Logistic Regression, and more complex machine learning models will be used, including:  
 - Decision Trees
 - Random Forests
 - XGBoost
@@ -18,12 +17,13 @@ Including:
 
 ### Dataset Description
 -- ----
-* The LendingClub dataset covers P2P loans made on the Lendingclub marketplace from 2007 to 2018. It covers both information on the loan, including loan amount and status, as well as applicant information. The data is approximatly 2 million rows, with 151 columns, containing text and numeric data.  The full data dictionary can be found here:  
+* The LendingClub dataset covers P2P loans made on the Lendingclub marketplace from 2007 to 2018. It covers both information on the loan, including loan amount and loan status, as well as applicant information. The dataset is approximatly 2 million rows, with 151 columns, containing text and numeric data. The full data dictionary can be found here:  
 [LendingClub Data Dictionary](https://www.kaggle.com/datasets/jonchan2003/lending-club-data-dictionary)  
-* More information:   
+* More information on LendingClub can be found here:   
 [LendingClub Wikipedia](https://en.wikipedia.org/wiki/LendingClub)
 
 ### Running the project
+The project is run in jupyter notebooks using python, using the common data science librarys such as pandas, numpy, malplotlib, seaborn, etc. 
 -- -----
 1. Clone or download the repository
 2. pip install the requirements found in the requirements.txt file using:  
