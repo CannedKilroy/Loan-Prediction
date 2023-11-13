@@ -61,13 +61,16 @@ Accuracy, precision, and recall metrics will be used to evaluate a models perfor
 - ***Further Feature Engineering***
 
 - ***Logistic Regression***
+Explore log_reg model outputer
+
+- ***Drop features with high vif***
 
 ### Future Steps
 ---
 - Standardize employee title using regex or NLP
 - Standardize loan description given by the borrower using regex or NLP
 - Re-Introduce the geographical features by using 3rd party information such as average or median income for a specified state or zip code
-- 
+- Use cloud computing to carry out analysis on the full dataset rathe than a random sample. 
 
 
 ### Licensing, Authors, Acknowledgements
