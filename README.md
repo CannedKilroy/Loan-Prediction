@@ -25,7 +25,8 @@ Classical statistical methods, such as Logistic Regression, and more complex mac
 ### Running the project
 The project is run in jupyter notebooks using python, using the common data science librarys such as pandas, numpy, malplotlib, seaborn, etc. 
 -- -----
-1. Clone or download the repository
+1. clone the repository using:
+`git clone https://github.com/CannedKilroy/Loan-Evaluations.git`
 2. pip install the requirements found in the requirements.txt file using:  
 `pip install -r requirements.txt`
 3. Download and extract the csv's from:  
