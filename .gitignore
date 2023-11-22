@@ -8,3 +8,6 @@
 
 #ignore the data folder
 Data/
+
+#ignore pyc files
+*.pyc
