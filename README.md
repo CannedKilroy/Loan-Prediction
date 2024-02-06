@@ -2,33 +2,43 @@
 ### Date: Nov 9, 2023  
 ### Project Overview
 -- ----
-With an estimated size of $153 billion dollars in 2022, the peer to peer (P2P) loan market is a viable alternative to traditional lending institutions for individuals seeking small loans. However, investors face challenges in predicting the likelihood of repayment or default due to the lack of borrower information in P2P markets and lack of collateralization.
+With an estimated size of $153 billion dollars in 2022, the peer-to-peer (P2P) loan market is a viable alternative to traditional lending institutions for individuals seeking small loans. However, investors face challenges in predicting the likelihood of repayment or default due to the lack of borrower information in P2P markets and lack of collateralization.
 
-The Primary objective of this project is to **predict whether a borrower will repay or default on their loan, based on the charecteristics of the loan and the borrowers financial standing**, allowing investors to better minimize credit risk.
+The primary objective of this project is to **predict whether a borrower will repay or default on their loan, based on the characteristics of the loan and the borrower's financial standing**, allowing investors to better minimize credit risk.
 
-The secondary objective is to explore ***whether a comparable accuracy is achievable without the use of opaque metrics such as FICO scores.***. This could lead to more inclusive and fair lending practices, as FICO scores can sometimes reflect biases. Furthermore, it would increase accessability to those who have a limited credit history or are otherwise misrepresented by tradiontal credit scoring methods, enabling investors to extend more loans. 
+The secondary objective is to explore **whether a comparable accuracy is achievable without the use of opaque metrics such as FICO scores.** This allows for more inclusive and fair lending practices, as FICO scores can sometimes reflect biases. Furthermore, it would increase accessibility to those who have a limited credit history or are otherwise misrepresented by traditional credit scoring methods, allowing investors to extend more loans. 
+
+### Methods and Models Used
+-- ----
+This project utilizes several Python libraries and machine learning models to analyze loan data:
+- Pandas
+- Numpy
+- Matplotlib
+- Sci-kit learn
+- joblib
+- pathlib
+- sklearnx
 
 Classical statistical methods, such as Logistic Regression, and more complex machine learning models will be used, including:  
 - SVM
 - Decision Trees
 - Random Forests
-These were chosen as it gives variety: SVM is distance based, log reg probability based, and decision trees rule based. 
+These models were chosen as they operate off different principles: SVM is distance-based, Logistic Regression probability-based, and decision trees rule based. 
 
 ### Dataset Description
 -- ----
-* The LendingClub dataset covers P2P loans made on the Lendingclub marketplace from 2007 to 2018. It covers both information on the loan, including loan amount and loan status, as well as applicant information. The dataset is approximatly 2 million rows, with 151 columns, containing text and numeric data. The full data dictionary can be found here:  
+* The LendingClub dataset covers P2P loans made on the Lendingclub marketplace from 2007 to 2018. It includes information on the loan, such as loan amount and loan status, as well as applicant information. The dataset is approximately 2 million rows, with 151 columns, containing text and numeric data. For more information on the dataset, the full data dictionary can be found here:  
 [LendingClub Data Dictionary](https://www.kaggle.com/datasets/jonchan2003/lending-club-data-dictionary)  
-* More information on LendingClub can be found here:   
+* More information on LendingClub:   
 [LendingClub Wikipedia](https://en.wikipedia.org/wiki/LendingClub)
 
-### Running the project
-The project is run in jupyter notebooks using python, using the common data science librarys such as pandas, numpy, malplotlib, seaborn, etc. 
+### Running the Project
 -- -----
-Create the enviroment:
+Create the environment:
 1. `conda create --name loans_capstone python=3.11`
 2. `conda activate loans_capstone` 
 3. `pip install -r requirements.txt`   
-4. Create a kernal (optional)  
+4. Create a kernel (optional)  
 `ipython kernel install --name "loans_capstone" --user` 
 
 Running the project:
@@ -38,8 +48,8 @@ Running the project:
 2. pip install the requirements found in the requirements.txt file using:  
 `pip install -r requirements.txt`
 
-3. Create a `Data` directory inside your repo and then create a `Lending_club` folder inside the `Data` folder. All the necessary files to run all notebooks, including the data, data dict, and cleaned data files for the models,  can be found in this google drive:  
-[Data](#https://drive.google.com/drive/folders/1-oJ72rJPTO9L9zE19ICn9jgmrbjptquR?usp=sharing)  
+3. Create a `Data` directory inside your repo and then create a `Lending_club` folder inside the `Data` folder. All the necessary files to run all notebooks, including the data, data dict, and cleaned data files for the models, can be found in this google drive:  
+[Data](https://drive.google.com/drive/folders/1-oJ72rJPTO9L9zE19ICn9jgmrbjptquR?usp=sharing)  
 Download and extract the files. Place them inside the new folder:  
 "/Data/Lending_club/"
 
@@ -80,24 +90,26 @@ AUC: 0.71
 ### Steps so far
 ---
 ***Data Cleaning***
-- The data so far has been rudimentarily cleaned. As each loan acts as essentially a barcode, with a specific combination values effecting the classification, missing data cannot easily be imputed. This makes cleaning the data especially difficult. As the majority of missing values are found in loans with special conditions, the simplest solution is to drop the problomatic rows and columns. These special condition rows and asociated columns account for only a small subeset of the data. Furthermore, any columns that can leak the outcome of the loan, for example those that track loan repayments once the loan has been given, have been removed, along with any irrelavent columns such as LendingClubs internal loan tracking id's.
+- The data so far has been rudimentarily cleaned. As each loan acts as essentially a barcode, with a specific combination values effecting the classification, missing data cannot easily be imputed. This makes cleaning the data especially difficult. As the majority of missing values are found in loans with special conditions, the simplest solution is to drop the problematic rows and columns. These special condition rows and associated columns account for only a small subset of the data. Furthermore, any columns that can leak the outcome of the loan, for example those that track loan repayments once the loan has been given, have been removed, along with any irrelevant columns such as LendingClubs internal loan tracking id's.
 
 ***EDA***
 - In performing EDA, some key insights were made. The data is heavily inbalanced, with  ~ 80% of loans being successful and 20% failed. There seems to be an inverse relationship between the interest rate and the number of loans issued. This would be a good topic to further exploration, augmented with external economic data. In addition, we found that the largest purpose was for the loans was for debt_consolidation. Most interestingly, there is a linear pattern between annual income and the loan amount. The difference in interest rates for failed and successful loans was quite stark, added context when the interest rate was found to be the biggest discriminator in the decision tree. 
 
-***Log Reg***
-- A baseline model was fit in 3 iterations. It was found that there are many non linear relationship between, however, log reg provided a good benchmark, achieving ~ 87% precision for class 1 successful loans. 
+***Logistic Regression***
+- A baseline model was fit in 3 iterations. It was found that there are many non linear relationship, however, the model provided a good benchmark, achieving ~ 87% precision for class 1 successful loans. 
 
 ***SVM***
-- The optimized SVM model (non linear kernal) achieved a slightly higher precision. However, there was some overfitting. 
+- The optimized SVM model (non linear kernel) achieved a slightly higher precision. However, there was some overfitting. 
 
 ***Decision Tree***
-- The decision had slightly lower performance metrics compared to the baseline log reg model. There were many issues with overfitting. 
+- The decision had slightly lower performance metrics compared to the baseline Logistic Regression model. There were many issues with overfitting. 
 
 ***Random Forest***
-- The random forrest perofrmed the best, achieving a 88% accuracy. 
+- The Random Forest performed the best, achieving a 88% accuracy. 
 
 ### Next Steps
+- Make streamlit app public and expand to include EDA
+- Evaluate the models stability
 - Interest rate was by far the best predictor for decision trees in terms of feature importance and SHAP value. Although interest rate is not definitively leaky feature, this should be explored further.  
 - Further feature engineering.
 - Further exploration of random forest and why it did not perform better. 
