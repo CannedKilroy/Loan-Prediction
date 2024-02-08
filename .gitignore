@@ -11,3 +11,6 @@ Data/
 
 #ignore pyc files
 *.pyc
+
+#ignore db file, for realtime collaboration iirc
+.jupyter_ystore.db
