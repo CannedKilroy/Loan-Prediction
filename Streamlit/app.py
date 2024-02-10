@@ -17,7 +17,7 @@ st.markdown("""
 
 # # ################################################
 # Load the data in
-parquet_file_path = Path('../Cleaned_Data/model_cleaned')
+parquet_file_path = Path('Cleaned_Data/model_cleaned')
 try:
     # Read the parquet file
     loans_df = pd.read_parquet(parquet_file_path)
@@ -27,9 +27,9 @@ except FileNotFoundError as e:
     
 # ################################################
 # Load Log Reg model
-model_path = Path('../Models/best_logistic_regression_model.joblib')
+model_path = Path('Models/best_logistic_regression_model.joblib')
 model = load(model_path)
-preprocessor_path = Path('../Models/log_reg_preprocessor.joblib')
+preprocessor_path = Path('Models/log_reg_preprocessor.joblib')
 preprocessor = load(preprocessor_path)
 
 # ################################################
