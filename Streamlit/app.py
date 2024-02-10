@@ -1,22 +1,9 @@
-#streamlit app
-
 import streamlit as st
-
 from joblib import load
 import pandas as pd
 from pathlib import Path
 
-# Additional Styles
-st.markdown("""
-    <style>
-    .main {
-        background-color: #15397d;
-    }
-    </style>
-    """, unsafe_allow_html=True)    
-
-# # ################################################
-# Load the data in
+# ############# LOAD THE DATA #####################
 parquet_file_path = Path('Cleaned_Data/model_cleaned')
 try:
     # Read the parquet file
@@ -25,23 +12,29 @@ except FileNotFoundError as e:
     print(e.args[1])
     print('Check file location')
     
-# ################################################
-# Load Log Reg model
+# ############# LOAD THE MODELS #####################
 model_path = Path('Models/best_logistic_regression_model.joblib')
 model = load(model_path)
 
-# ################################################
-# Chose a random loan to make predictions off
+# ############# CHOOSE RANDOM LOAN  #####################
 loan = loans_df.iloc[[3]].copy()
 
-# ################################################
-# Define the layout of the app
+# ############# DEFINE THE LAYOUT #####################
 st.image('Streamlit/banner_2.png', use_column_width=True)
-st.title('Loan Default Prediction App')
-st.write('Machine learning to predict loan defaults.')
+st.title('Loan Default Prediction')
 
+st.write('''
+Welcome to the interactive demo!
+This app showcases a logistic regression 
+model for predicting whether a loan will be successful, 
+designed for demonstration purposes. Due to the number of features used in the model, only 
+6 were chosen to be interactive for simplicity. Note that the remaining feature values 
+are hard coded, meaning any changes might have a small effect on the predicted probability,
+and that a probability threshold of 0.5 is used.
+''')
 
 # ############# USER INPUTS #####################
+
 #Loan amount
 loan_amount = st.slider('Loan Amount', min_value=0, max_value=40000, value=10000, step=500) # default value
 loan['loan_amnt'] = loan_amount
@@ -52,21 +45,25 @@ loan['emp_length'] = emp_length
 
 # Home ownership
 ownership_options = ['MORTGAGE', 'RENT', 'OWN', 'ANY', 'NONE', 'OTHER']
-home_ownership = st.selectbox('Home Ownership Status', ownership_options)
+home_ownership = st.selectbox('Home Ownership Status', ownership_options, index=1)
 loan['home_ownership'] = home_ownership
+
 # Loan Purpose
 purpose_options = ['debt_consolidation', 'vacation', 'credit_card', 'home_improvement', 
                    'other', 'major_purchase', 'car', 'house', 
                    'moving', 'small_business', 'medical', 'renewable_energy', 'wedding']
-purpose = st.selectbox('Select Loan Purpose', purpose_options)
+purpose = st.selectbox('Select Loan Purpose', purpose_options, index=0)
 loan['purpose'] = purpose
 
 # Annual Income
-income = st.slider('Annual Income', min_value=0, max_value=200000, step=1000, format='%f')
+income = st.slider('Annual Income', min_value=0, max_value=200000, step=1000, format='%f', value = 40000)
 loan['annual_inc'] = income
-# ###############################################
 
-# Columns to drop
+#Interest Rate
+rate = st.slider('Interest Rate', min_value = 5.0, max_value = 31.0, step = 0.05, value = 18.0)
+loan['int_rate'] = rate
+
+# ############# DROP COLUMNS #####################
 columns_to_drop = ['installment', 'open_acc', 'pub_rec', 'revol_bal', 'revol_util', 'total_acc', 
  'tot_cur_bal', 'total_rev_hi_lim', 'bc_open_to_buy', 'bc_util', 
  'mort_acc', 'num_actv_bc_tl', 'num_actv_rev_tl', 'num_bc_sats', 'num_bc_tl', 'num_il_tl', 
@@ -74,12 +71,9 @@ columns_to_drop = ['installment', 'open_acc', 'pub_rec', 'revol_bal', 'revol_uti
  'tot_hi_cred_lim', 'total_bal_ex_mort', 'total_bc_limit', 'total_il_high_credit_limit',
  'num_tl_op_past_12m', 'loan_status']
 loan.drop(columns=columns_to_drop, inplace=True)
-
-# ###############################################
-
 processed_input = loan
 
-# When the user clicks the predict button, make a prediction and display it
+# ############# PREDICT #####################
 if st.button('Predict Default'):
     
     probabilities = model.predict_proba(processed_input)
