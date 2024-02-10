@@ -36,7 +36,7 @@ loan = loans_df.iloc[[3]].copy()
 
 # ################################################
 # Define the layout of the app
-st.image('banner_2.png', use_column_width=True)
+st.image('Streamlit/banner_2.png', use_column_width=True)
 st.title('Loan Default Prediction App')
 st.write('Machine learning to predict loan defaults.')
 
@@ -95,6 +95,6 @@ if st.button('Predict Default'):
     st.write(f'Probability of loan defaulting: {probability_default:.2f}')
     
     if probability_success > 0.50:
-        st.image('approved.png')
+        st.image('Streamlit/approved.png')
     else:
-        st.image('denied.jpg')    
+        st.image('Streamlit/denied.jpg')    
