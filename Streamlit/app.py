@@ -17,7 +17,7 @@ st.markdown("""
 
 # # ################################################
 # Load the data in
-parquet_file_path = Path('../Data/Lending_club/model_cleaned')
+parquet_file_path = Path('../Cleaned_Data/model_cleaned')
 try:
     # Read the parquet file
     loans_df = pd.read_parquet(parquet_file_path)
