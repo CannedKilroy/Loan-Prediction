@@ -2,6 +2,5 @@ joblib==1.2.0
 matplotlib==3.7.1
 numpy==1.24.3
 pandas==2.0.0
-pandas==1.5.3
 seaborn==0.13.2
 streamlit==1.28.2
