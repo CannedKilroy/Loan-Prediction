@@ -29,8 +29,6 @@ except FileNotFoundError as e:
 # Load Log Reg model
 model_path = Path('Models/best_logistic_regression_model.joblib')
 model = load(model_path)
-preprocessor_path = Path('Models/log_reg_preprocessor.joblib')
-preprocessor = load(preprocessor_path)
 
 # ################################################
 # Chose a random loan to make predictions off
