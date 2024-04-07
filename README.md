@@ -1,5 +1,6 @@
 # Classification - Loan Data Analysis
 ### Date: Nov 9, 2023  
+Streamlit Demo app: https://loan-default-predictor.streamlit.app/
 ### Project Overview
 -- ----
 With an estimated size of $153 billion dollars in 2022, the peer-to-peer (P2P) loan market is a viable alternative to traditional lending institutions for individuals seeking small loans. However, investors face challenges in predicting the likelihood of repayment or default due to the lack of borrower information in P2P markets and lack of collateralization.
@@ -24,6 +25,8 @@ Classical statistical methods, such as Logistic Regression, and more complex mac
 - Decision Trees
 - Random Forests
 These models were chosen as they operate off different principles: SVM is distance-based, Logistic Regression probability-based, and decision trees rule based. 
+
+
 
 ### Dataset Description
 -- ----
